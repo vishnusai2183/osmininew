@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Process Synchronization </title>
+    <meta name="description" content="#" />
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+    <!--Inter UI font-->
+    <link rel="stylesheet" href="../css/innerui.css">
+
+    <!--vendors styles-->
+    <link rel="stylesheet" href="../css/topic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+
+    <!-- Bootstrap CSS / Color Scheme -->
+    <link rel="stylesheet" href="../css/default.css" id="theme-color">
+    <link rel="stylesheet" href="../css/tl.css">
+</head>
+
+<body>
+
+    <!--navigation-->
+    <section class="smart-scroll">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-md navbar-dark">
+                <a class="navbar-brand heading-black" href="../index.html">
+                    OS Project
+                </a>
+                <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse"
+                    data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span data-feather="grid"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link page-scroll" href="mailto:contact@shariquenadim.tk?subject=We love to hear you&body=Please provide us your precious feedback.. ">Feedback</a>
+                        </li>
+
+                        <li class="nav-item ">
+                            <a class="nav-link page-scroll " href="# ">Reference</i></a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link page-scroll d-flex flex-row align-items-center text-primary " href="../contents.html ">
+                                <em data-feather="layout " width="18 " height="18 " class="mr-2 "></em><i class="fa fa-indent " aria-hidden="true "> </i> &nbsp; INDEX
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </section>
+
+    <div class="barcontainer">
+
+        <div class="sidebar ">
+            <h5> <a href="process_sync.html"> Process Synchronization </a></h5>
+            <dl>
+                
+                <dd><a href="producer-consumer.html">Producer-Consumer </a></dd>
+                <dd><a href="reader-writer.html">Reader-Writer’s </a></dd>
+                <dd><a href="diner-philospher.html">Dining Philosopher </a></dd>
+            </dl>
+
+        </div>
+
+        <div class="rightbar">
+            <div class="header ">
+                <h1>PROCESS SYNCHRONIZATION </h1>
+            </div>
+            <div class="why sect">
+                <strong>Introduction:</strong>
+            <p>These processes are categorized as one of the following two types:</p>
+            <ol>
+                <li>Independent process</li>
+                <li>Cooperative process</li>
+            </ol>    
+            </div>
+            
+            <!-- use bellow div if there is a heading why do we want  this? -->
+            <div class="why sect">
+                 <strong>Independent Process:</strong>
+                 <p>Execution of one process does not affects the execution of other processes.</p>
+            </div>
+            <div class="why sect">
+                 <strong>Cooperative Process:</strong>
+                 <p>Execution of one process affects the execution of other processes. </p>
+                 <p>Process synchronization problem arises in the case of Cooperative process also because resources are shared in Cooperative processes.</p>
+            </div>
+            <div class="'why sect">
+                <strong>Race Condition: </strong>
+                <p>When more than one processes are executing the same code or accessing the same memory or any shared variable in that condition there is a possibility that the output or the value of the shared variable is wrong so for that all the processes doing the race to say that my output is correct this condition known as a race condition.  </p>
+                <p>A race condition is a situation that may occur inside a critical section. This happens when the result of multiple thread execution in the critical section differs according to the order in which the threads execute.</p>
+            </div>
+            <div class="why sect">
+                <strong>Critical Section Problem: </strong>
+                <p>Consider a system consisting of n processes {P0, P1, ... , Pn−1}. Each process has a segment of code, called a critical section, in which the process may be changing common variables, updating a table, writing a file, and so on. The important feature of the system is that, when one process is executing in its critical section, no other process is allowed to execute in its critical section. That is, no two processes are executing in their critical sections at the same time. The critical-section problem is to design a protocol that the processes can use to cooperate. Each process must request permission to enter its critical section. The section of code implementing this request is the entry section. The critical section may be followed by an exit section. The remaining code is the remainder section. </p>
+                <center><img src="images/image 1.png" alt="image 1"></center><br><br>
+                <!--<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Structure of typical process pi</p>-->
+                <center><p>Structure of typical process pi</p></center>
+                <p>Critical-section problem must satisfy the following three requirements: </p>
+                <ol>
+                    <li><b>Mutual Exclusion:</b> If process Pi is executing in its critical section, then no other processes can be executing in their critical sections. </li>
+                    <li><b>Progress: </b>If no process is executing in its critical section and some processes wish to enter their critical sections, then only those processes that are not executing in their remainder sections can participate in deciding which will enter its critical section next, and this selection cannot be postponed indefinitely.</li>
+                    <li><b>Bounded Waiting:</b> There exists a bound, or limit, on the number of times that other processes are allowed to enter their critical sections after a process has made a request to enter its critical section and before that request is granted.</li>
+                </ol>
+                <p>Two general approaches are used to handle critical sections in operating systems: </p>
+                <p><b>Pre-emptive Kernels:</b> A pre-emptive kernel allows a process to be pre-empted while it is running in kernel mode. </p>
+                <p><b>Non-Pre-emptive Kernels:</b> A nonpreemptive kernel does not allow a process running in kernel mode to be pre-empted. </p>
+
+            </div>
+            <div class="why sect">
+                <strong>Peterson’s Solution: </strong>
+                <p>In Peterson’s solution, we have two shared variables: </p>
+                <ol>
+                    <li>Boolean flag[i]: Initialized to FALSE, initially no one is interested in entering the critical section<br>
+                        <center><img src="images/image 2.png" alt="image 2"></center>
+                    </li><br>
+                    <li>int turn: The process whose turn is to enter the critical section. <br><br>
+                        <center><img src="images/image 3.png" alt="image 3"></center>
+                    </li>
+                </ol>
+                <p>Prove this solution is correct </p>
+                <ol>
+                    <li>Mutual exclusion is preserved.</li>
+                    <li>The progress requirement is satisfied.</li>
+                    <li>The bounded-waiting requirement is met.</li>
+                </ol>
+            </div>
+            <div class="why sect">
+                <strong>Semaphores: </strong>
+                <p>A semaphore S is an integer variable that, apart from initialization, is accessed only through two standard atomic operations: wait() and signal().</p>
+                <p>Wait():The wait operation decrements the value of its argument S. </p><br>
+                <center><img src="images/image 4.png" alt="image 4"></center>
+                <br><br>
+                <p>Signal():The signal operation increments the value of its argument S.</p>
+                <center><img src="images/image 5.png" alt="image 5"></center><br><br>
+                <p>Types of semaphores: <br>
+
+                    1.Counting semaphores <br>
+                    
+                    2.Binary semaphores </p>
+            </div>
+            <div class="why sect">
+                <strong>Counting Semaphores: </strong>
+                <p>These are integer value semaphores and have an unrestricted value domain. These semaphores are used to coordinate the resource access, where the semaphore count is the number of available resources. If the resources are added, semaphore count automatically incremented and if the resources are removed, the count is decremented.</p>
+            </div>
+            <div class="why sect">
+                <strong>Binary Semaphores: </strong>
+                <p>The binary semaphores are like counting semaphores but their value is restricted to 0 and 1. The wait operation only works when the semaphore sometimes easier to implement binary semaphores than counting semaphores.</p>
+            </div>
+            <div class="advantages sect">
+                <strong>ADVANTAGES OF SEMAPHORES: </strong>
+                <ul>
+                    <li>Semaphores allow only one process into the critical section. They follow the mutual exclusion principle strictly and are much more efficient than some other methods of synchronization. </li>
+                   <li>Semaphores are implemented in the machine independent code of the microkernel. So they are machine independent.</li>
+                </ul>
+                <br>
+                <strong>DISADVANTAGES OF SEMAPHORES: </strong>
+                <ul>
+                   <li>Semaphores are complicated so the wait and signal operations must be implemented in the correct order to prevent deadlocks.</li>
+                    <li>Semaphores are impractical for last scale use as their use leads to loss of modularity. This happens because the wait and signal operations prevent the creation of a structured layout for the system. </li>
+                </ul>
+
+               
+            </div>
+            <div class="algorithm sect">
+                
+                <br>
+                 <p>Problems on Process Synchronization: </p>
+                 
+                 <ul>
+                    <li> <a href="producer-consumer.html"> Producer-Consumer </a></li>
+                    <li> <a href="reader-writer.html"> Reader-Writer’s </a></li>
+                    <li> <a href="diner-philospher.html"> Dining Philosopher </a> </li>
+                    
+                </ul>
+
+                <br>
+                 
+            </div>
+
+
+
+            
+            
+           
+
+        </div>
+    
+    </div>
+
+
+    <!--footer-->
+    <footer class="py-6 ">
+        <div class="container ">
+            <div class="row ">
+                <div class="col-sm-5 mr-auto ">
+                    <h5>OS Project</h5>
+                    <p class="text-muted ">Description</p>
+                    <ul class="list-inline social social-sm ">
+                        <li class="list-inline-item ">
+                            <a href="https://osmini.netlify.app/ " target="_blank "><i class="fa fa-link "></i>Live</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="col-sm-2 ">
+                    <h5><a href="mailto:contact@shariquenadim.tk?subject=We love to hear you&body=Please provide us your precious feedback.. ">Feedback</a></h5>
+
+                </div>
+                <div class="col-sm-2 ">
+                    <h5><a href="# ">Reference</a></h5>
+
+                </div>
+                <div class="col-sm-2 ">
+                    <h5><a href="../index.html ">Home</a></h5>
+
+                </div>
+            </div>
+            <div class="row mt-5 ">
+                <div class="col-12 text-muted text-center small-xl ">
+                    &copy;
+                    <script>
+                        document.write(new Date().getFullYear());
+                    </script> Computer Science Department -<a href="https://www.nitk.ac.in/ " target="_blank "> National Institute of Technology, Karnataka </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+    <!--scroll to top-->
+    <div class="scroll-top ">
+        <i class="fa fa-angle-up " aria-hidden="true "></i>
+    </div>
+
+
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js "></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.7.3/feather.min.js "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js "></script>
+    <script src="js/scripts.js "></script>
+
+    <!-- script for index animation -->
+    <script>
+        (function ($) {
+            $(function () {
+
+
+                $(window).on('scroll', function () {
+                    fnOnScroll();
+                });
+
+                $(window).on('resize', function () {
+                    fnOnResize();
+                });
+
+
+                var agTimeline = $('.js-timeline'),
+                    agTimelineLine = $('.js-timeline_line'),
+                    agTimelineLineProgress = $('.js-timeline_line-progress'),
+                    agTimelinePoint = $('.js-timeline-card_point-box'),
+                    agTimelineItem = $('.js-timeline_item'),
+                    agOuterHeight = $(window).outerHeight(),
+                    agHeight = $(window).height(),
+                    f = -1,
+                    agFlag = false;
+
+                function fnOnScroll() {
+                    agPosY = $(window).scrollTop();
+
+                    fnUpdateFrame();
+                }
+
+                function fnOnResize() {
+                    agPosY = $(window).scrollTop();
+                    agHeight = $(window).height();
+
+                    fnUpdateFrame();
+                }
+
+                function fnUpdateWindow() {
+                    agFlag = false;
+
+                    agTimelineLine.css({
+                        top: agTimelineItem.first().find(agTimelinePoint).offset().top - agTimelineItem.first().offset().top,
+                        bottom: agTimeline.offset().top + agTimeline.outerHeight() - agTimelineItem.last().find(agTimelinePoint).offset().top
+                    });
+
+                    f !== agPosY && (f = agPosY, agHeight, fnUpdateProgress());
+                }
+
+                function fnUpdateProgress() {
+                    var agTop = agTimelineItem.last().find(agTimelinePoint).offset().top;
+
+                    i = agTop + agPosY - $(window).scrollTop();
+                    a = agTimelineLineProgress.offset().top + agPosY - $(window).scrollTop();
+                    n = agPosY - a + agOuterHeight / 2;
+                    i <= agPosY + agOuterHeight / 2 && (n = i - a);
+                    agTimelineLineProgress.css({
+                        height: n + "px "
+                    });
+
+                    agTimelineItem.each(function () {
+                        var agTop = $(this).find(agTimelinePoint).offset().top;
+
+                        (agTop + agPosY - $(window).scrollTop()) < agPosY + .5 * agOuterHeight ? $(this).addClass('js-ag-active') : $(this).removeClass('js-ag-active');
+                    })
+                }
+
+                function fnUpdateFrame() {
+                    agFlag || requestAnimationFrame(fnUpdateWindow);
+                    agFlag = true;
+                }
+
+
+            });
+        })(jQuery);
+    </script>
+
+</body>
+
+</html>

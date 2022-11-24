@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>MFT</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../css/bootswatch.css" />
+  <script src="disk_schedule.js"></script>
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Operating System Mini Project By Group 420" />
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+
+    <!--Inter UI font-->
+    <link rel="stylesheet" href="../css/innerui.css">
+
+    <!--vendors styles-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+
+    <!-- Bootstrap CSS / Color Scheme -->
+    <link rel="stylesheet" href="../css/default.css" id="theme-color">
+</head>
+
+<body>
+    <section>
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-md navbar-dark">
+                <a class="navbar-brand heading-black" href="../../index.html">
+                OS Project
+            </a>
+                <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span data-feather="grid"></span>
+            </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                  <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="../../page_replacement/prmain.html">Back</a>
+                    </li>
+                </ul>
+                </div>
+            </nav>
+        </div>
+  </section>
+  <br><br>
+  <div class="container">
+    <div class="jumbo">
+      <h1 class="display-3" style="font-size: 55px; color: #5bdebb; font-weight: bold;
+      ">Page Replacement</h1>
+      <p class="lead">Page replacement is a process of swapping out an existing page from the frame of a main memory and replacing it with a new page. It is required when all the frames of main memory (or the ones alloted for the process) are already
+        occupied. Thus, a page has to be replaced to create a room for the required page.</p>
+      <hr class="my-4">
+      <p class="lead">
+        <a class="btn btn-success" href="simulate.html" role="button" style="background-color: #52eac4;">SIMULATE</a>
+      </p>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="card text-white bg-danger mb-3" style="max-width: 25rem;">
+          <div class="card-header">FIFO</div>
+          <div class="card-body">
+            <h4 class="card-title">First In First Out</h4>
+            <p class="card-text">In this algorithm,the OS keeps track of all pages in the memory in a queue, with the oldest page in the front of the queue. When a page needs to be replaced, the page at the front of the queue is selected for removal.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="card text-white bg-danger mb-3" style="max-width: 25rem;">
+          <div class="card-header">LRU</div>
+          <div class="card-body">
+            <h4 class="card-title">Least Recently Used</h4>
+            <p class="card-text">This algorithm replaces the page which has not been referred for the longest time.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="card text-white bg-danger mb-3" style="max-width: 25rem;">
+          <div class="card-header">Optimal</div>
+          <div class="card-body">
+            <h4 class="card-title">Optimal</h4>
+            <p class="card-text">This algorithm replaces the page which will not be referred for the longest in future. It exists only in theory and is used as a benchmark</p>
+          </div>
+        </div>
+      </div>
+    </div>
+</body>
+
+</html>
+

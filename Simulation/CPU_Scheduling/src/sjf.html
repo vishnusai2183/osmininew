@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../../css/bootswatch.css" />
+
+  <title>CPU Scheduling</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../../css/bootswatch.css" />
+  <link rel="stylesheet" type="text/css" href="../css/index.css">
+  <script type="text/javascript" src="../js/index.js"></script>
+  
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Operating System Mini Project By Group 420" />
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+
+    <!--Inter UI font-->
+    <link rel="stylesheet" href="../../css/innerui.css">
+
+    <!--vendors styles-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+
+    <!-- Bootstrap CSS / Color Scheme -->
+    <link rel="stylesheet" href="../../css/default.css" id="theme-color">
+</head>
+
+<body>
+    <section>
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-md navbar-dark">
+                <a class="navbar-brand heading-black" href="../../../index.html">
+                OS Project
+            </a>
+                <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span data-feather="grid"></span>
+            </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                  <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="../index.html">Back</a>
+                    </li>
+                </ul>
+                </div>
+            </nav>
+        </div>
+  </section>
+  <br><br>
+  <div class="container">
+    <!-- Input section -->
+    <div class="jumbo">
+      <h1 class="display-3" style="font-size: 55px; color: #5bdebb; font-weight: bold;
+      ">SJF Scheduling</h1>
+      <br>
+      <div id="showinput"></div>
+      <hr>
+      <div class="row">
+        <div class="form-group" style="margin-left:50px; float:left;  width: 20%">
+          <label class="col-form-label" for="inputDefault">Arrival time:</label>
+          <input class="form-control" id="newat" name="at" placeholder="Arrival Time" type="text" size="35">
+        </div>
+        <div class="form-group" style="margin-left:50px; float:left;  width: 20%">
+          <label class="col-form-label" for="inputDefault">Burst time:</label>
+          <input class="form-control" id="newbt" name="bt" placeholder="Burst Time" type="text" size="35">
+        </div>
+      </div>
+      <button type="submit" id="add" class="btn btn-primary" style="margin-left: 36px" onclick="addToList()">Add</button>
+      <br>
+      <button type="submit" class="btn btn-primary" style="margin-left: 36px; margin-top: -36px; float: right;" onclick="clearData()">Clear Data</button>
+      <button type="submit" class="btn btn-primary" style="margin-left: 36px; margin-top: -36px; float: right;" onclick="showOutput(1)">Schedule It!</button>
+    </div>
+    <!-- Gantt Chart -->
+    <div style="margin-top: 150px;">
+      <h2 id="chart-header" style="text-align:center;"></h2>
+      <br />
+      <div id="gantt"></div>
+      <div id="timer"></div>
+      <br /><br />
+      <div>
+        <div style="width: 50%; text-align:center;float:left; font-size: 20px;" id="awt1"></div>
+        <div style="width: 50%; text-align:center;float:left; font-size: 20px;" id="atat1"></div>
+      </div>
+    </div>
+    <br>
+    <!-- CPU Operations -->
+    <div style="margin-top: 100px;">
+      <h3 id="operations-heading" style="text-align:center;"></h3>
+      <div id="operations"></div>
+    </div>
+    <!-- Table -->
+    <div style="margin-top: 50px;">
+      <h2 id="table-heading" style="text-align:center;"></h2>
+      <div>
+        <table id="tab" class="table table-striped centered responsive-table" style="border-color: black; border-width: 2px; align: center; bgcolor: white; cellspacing: 10px;">
+          <thead id="thead"></thead>
+          <tbody id="ptable"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

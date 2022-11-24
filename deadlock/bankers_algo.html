@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Bankers Algorithm</title>
+    <meta name="description" content="#" />
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+    <!--Inter UI font-->
+    <link rel="stylesheet" href="../css/innerui.css">
+
+    <!--vendors styles-->
+    <link rel="stylesheet" href="../css/topic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+
+    <!-- Bootstrap CSS / Color Scheme -->
+    <link rel="stylesheet" href="../css/default.css" id="theme-color">
+    <link rel="stylesheet" href="../css/tl.css">
+</head>
+
+<body>
+
+    <!--navigation-->
+    <section class="smart-scroll">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-md navbar-dark">
+                <a class="navbar-brand heading-black" href="../index.html">
+                    OS Project
+                </a>
+                <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse"
+                    data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span data-feather="grid"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link page-scroll" href="mailto:contact@shariquenadim.tk?subject=We love to hear you&body=Please provide us your precious feedback.. ">Feedback</a>
+                        </li>
+
+                        <li class="nav-item ">
+                            <a class="nav-link page-scroll " href="# ">Reference</i></a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link page-scroll d-flex flex-row align-items-center text-primary " href="../contents.html ">
+                                <em data-feather="layout " width="18 " height="18 " class="mr-2 "></em><i class="fa fa-indent " aria-hidden="true "> </i> &nbsp; INDEX
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link page-scroll d-flex flex-row align-items-center text-primary " href="../Simulation/Deadlock/index.html">
+                                <em data-feather="layout " width="18 " height="18 " class="mr-2 "></em><i class="fa fa-cogs" aria-hidden="true "> </i> &nbsp; SIMULATION
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </section>
+
+    <div class="barcontainer">
+
+        <div class="sidebar ">
+            <h5> <a href="deadlock.html"> Deadlock Avoidance Algorithms</a></h5>
+            <dl>
+                
+                <dd><a href="bankers_algo.html">Bankers Algorithm</a></dd>
+                
+            </dl>
+
+        </div>
+
+        <div class="rightbar">
+            <div class="header ">
+                <h1>BANKER’S ALGORITHM </h1>
+            </div>
+            <div class="introduction">
+                <p>The deadlock avoidance algorithm that is applicable to a resource allocation system with multiple instances of each resource type is the banker’s algorithm.</p>
+                <p>The banker’s algorithm is a resource allocation and deadlock avoidance algorithm that tests for safety by simulating the allocation for predetermined maximum possible amounts of all resources, then makes an ‘s-state’ check to test for possible activities, before deciding whether allocation should be allowed to continue.</p> 
+                <p>The 'S-State' examines all possible tests or activities before deciding whether the allocation should be allowed to each process.</p>
+                <p>When a new process enters the system, it must declare the maximum number of instances of each resource type that it may need. This number may not exceed the total number of resources in the system. When a user requests a set of resources, the system must determine whether the allocation of these resources will leave the system in a safe state. If it will, the resources are allocated; otherwise, the process must wait until some other process releases enough resources.  </p>
+                <p>Several data structures must be maintained to implement the banker’s algorithm. These data structures encode the state of the resource-allocation system. We need the following data structures, where n is the number of processes in the system and m is the number of resource types:  </p>
+                <ul>
+                    <li><b>Available:</b><br>A vector of length m indicates the number of available resources of each type. If Available[j] equals k, then k instances of resource type Rj are available.</li>
+                    <li><b>Max:</b><br>An n × m matrix defines the maximum demand of each process. If Max[i][j] equals k, then process Pi may request at most k instances of resource type Rj.  </li>
+                    <li><b>Allocation: </b><br>An n × m matrix defines the number of resources of each type currently allocated to each process. If Allocation[i][j] equals k, then process Pi is currently allocated k instances of resource type Rj.</li>
+                    <li><b>Need: </b><br>An n × m matrix indicates the remaining resource need of each process. If Need[i][j] equals k, then process Pi may need k more instances of resource type Rj to complete its task. Note that Need[i][j] equals Max[i][j] − <b>Allocation[i][j]:</b> These data structures vary over time in both size and value. </li>
+                </ul>
+                <p>Banker’s algorithm consists of Safety algorithm and Resource request algorithm.</p>
+
+            </div>
+            <div class="why sect">
+                <strong>Safety Algorithm:  </strong>
+                <p>This algorithm is used for finding out whether or not a system is in a safe state. This algorithm can be described as follows:</p>
+                <ol>
+                    <li>Let Work and Finish be vectors of length m and n, respectively. Initialize Work = Available and Finish[i] = false for i = 0, 1,…., n − 1.</li>
+                    <li>Find an index i such that both <ul>
+                        <li> Finish[i] == false</li>
+                        <li>Needi ≤ Work If no such i exists, go to step 4.</li>
+                    </ul></li>
+                    <li>Work = Work + Allocationi Finish[i] = true Go to step 2.</li>
+                    <li>If Finish[i] == true for all i, then the system is in a safe state. This algorithm may require an order of m × n2 operations to determine whether a state is safe. </li>
+                </ol>
+            </div>
+            <div class="why sect">
+                <strong>Resource-Request Algorithm: </strong>
+                <p>This algorithm is used for determining whether requests can be safely granted. Let Requesti be the request vector for process Pi. If Requesti [j] == k, then process Pi wants k instances of resource type Rj. When a request for resources is made by process Pi, the following actions are taken:  </p>
+               <ol>
+                   <li>If Requesti ≤ Needi , go to step 2. Otherwise, raise an error condition, since the process has exceeded its maximum claim. </li>
+                   <li>If Requesti ≤ Available, go to step 3. Otherwise, Pi must wait, since the resources are not available.  </li>
+                   <li>Have the system pretend to have allocated the requested resources to process Pi by modifying the state as follows:  </li>
+               </ol>
+               <p>Available = Available–Request i ; </p><br>
+               <p>Allocation i = Allocationi + Request i ; </p><br>
+               <p> Need i = Need i –Request i ; </p><br>
+               <p>If the resulting resource-allocation state is safe, the transaction is completed, and process Pi is allocated its resources. However, if the new state is unsafe, then Pi must wait for Requesti, and the old resource-allocation state is restored.</p>
+            </div>
+            <div class="why sect">
+                <strong>Example:</strong>
+                <p>Consider a system with five processes P0 through P4 and three resource types A, B, and C. Resource type A has ten instances, resource type B has five instances, and resource type C has seven instances. Suppose that, at time T0, the following snapshot of the system has been taken:</p>
+                <img src="images/image 1.png" alt="image 1"><br><br>
+                <p>The content of the matrix Need is defined to be Max − Allocation and is as follows: </p>
+                <img src="images/image 2.png" alt="image 2"><br><br>
+                <p>Applying Safety Algorithm to the above system: </p>
+                <img src="images/image 3.png" alt="image 3"><br><br>
+                <p>We claim that the system is currently in a safe state. Indeed, the sequence satisfies the safety criteria. Suppose now that process P1 requests one additional instance of resource type A and two instances of resource type C, so Request1 = (1,0,2). To decide whether this request can be immediately granted, we first check that Request1 ≤ Available—that is, that (1,0,2) ≤ (3,3,2), which is true. We then pretend that this request has been fulfilled, and we arrive at the following new state:</p>
+                <img src="images/image 4.png" alt="image 4"><br><br>
+                <p>We must determine whether this new system state is safe. To do so, we execute our safety algorithm and find that the sequence satisfies the safety requirement. Hence, we can immediately grant the request of process P1. </p>
+            </div>
+            <div class="advantages sect">
+                <strong>Advantages: </strong>
+                <ul>
+                    <li>It has adequate resources to meet the requirements of each resource.</li>
+                    <li>This algorithm significantly avoids the deadlock. </li>
+                    <li>It assists the operating system in holding and managing process requests for each type of resource in the system.</li>
+                </ul>
+                <br>
+                <strong>Disadvantages:  </strong>
+                <ul>
+                    <li>This algorithm requires that there should be a fixed number of resources to allocate. If a device breaks and becomes suddenly unavailable the algorithm would not work.</li>
+                    <li>Overhead cost incurred by the algorithm can be high when there are many processes and resources because it has to be invoked for every process. </li>
+                    
+                </ul>
+
+               
+            </div>
+
+            
+
+            
+
+        </div>
+    
+    </div>
+   
+
+
+    <!--footer-->
+    <footer class="py-6 ">
+        <div class="container ">
+            <div class="row ">
+                <div class="col-sm-5 mr-auto ">
+                    <h5>OS Project</h5>
+                    <p class="text-muted ">Description</p>
+                    <ul class="list-inline social social-sm ">
+                        <li class="list-inline-item ">
+                            <a href="https://osmini.netlify.app/ " target="_blank "><i class="fa fa-link "></i>Live</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="col-sm-2 ">
+                    <h5><a href="mailto:contact@shariquenadim.tk?subject=We love to hear you&body=Please provide us your precious feedback.. ">Feedback</a></h5>
+
+                </div>
+                <div class="col-sm-2 ">
+                    <h5><a href="# ">Reference</a></h5>
+
+                </div>
+                <div class="col-sm-2 ">
+                    <h5><a href="../index.html ">Home</a></h5>
+
+                </div>
+            </div>
+            <div class="row mt-5 ">
+                <div class="col-12 text-muted text-center small-xl ">
+                    &copy;
+                    <script>
+                        document.write(new Date().getFullYear());
+                    </script> Computer Science Department -<a href="https://www.nitk.ac.in/ " target="_blank "> National Institute of Technology, Karnataka </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+   
+
+
+
+    <!--scroll to top-->
+    <div class="scroll-top ">
+        <i class="fa fa-angle-up " aria-hidden="true "></i>
+    </div>
+
+
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js "></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.7.3/feather.min.js "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js "></script>
+    <script src="js/scripts.js "></script>
+
+    <!-- script for index animation -->
+    <script>
+        (function ($) {
+            $(function () {
+
+
+                $(window).on('scroll', function () {
+                    fnOnScroll();
+                });
+
+                $(window).on('resize', function () {
+                    fnOnResize();
+                });
+
+
+                var agTimeline = $('.js-timeline'),
+                    agTimelineLine = $('.js-timeline_line'),
+                    agTimelineLineProgress = $('.js-timeline_line-progress'),
+                    agTimelinePoint = $('.js-timeline-card_point-box'),
+                    agTimelineItem = $('.js-timeline_item'),
+                    agOuterHeight = $(window).outerHeight(),
+                    agHeight = $(window).height(),
+                    f = -1,
+                    agFlag = false;
+
+                function fnOnScroll() {
+                    agPosY = $(window).scrollTop();
+
+                    fnUpdateFrame();
+                }
+
+                function fnOnResize() {
+                    agPosY = $(window).scrollTop();
+                    agHeight = $(window).height();
+
+                    fnUpdateFrame();
+                }
+
+                function fnUpdateWindow() {
+                    agFlag = false;
+
+                    agTimelineLine.css({
+                        top: agTimelineItem.first().find(agTimelinePoint).offset().top - agTimelineItem.first().offset().top,
+                        bottom: agTimeline.offset().top + agTimeline.outerHeight() - agTimelineItem.last().find(agTimelinePoint).offset().top
+                    });
+
+                    f !== agPosY && (f = agPosY, agHeight, fnUpdateProgress());
+                }
+
+                function fnUpdateProgress() {
+                    var agTop = agTimelineItem.last().find(agTimelinePoint).offset().top;
+
+                    i = agTop + agPosY - $(window).scrollTop();
+                    a = agTimelineLineProgress.offset().top + agPosY - $(window).scrollTop();
+                    n = agPosY - a + agOuterHeight / 2;
+                    i <= agPosY + agOuterHeight / 2 && (n = i - a);
+                    agTimelineLineProgress.css({
+                        height: n + "px "
+                    });
+
+                    agTimelineItem.each(function () {
+                        var agTop = $(this).find(agTimelinePoint).offset().top;
+
+                        (agTop + agPosY - $(window).scrollTop()) < agPosY + .5 * agOuterHeight ? $(this).addClass('js-ag-active') : $(this).removeClass('js-ag-active');
+                    })
+                }
+
+                function fnUpdateFrame() {
+                    agFlag || requestAnimationFrame(fnUpdateWindow);
+                    agFlag = true;
+                }
+
+
+            });
+        })(jQuery);
+    </script>
+
+</body>
+
+</html>

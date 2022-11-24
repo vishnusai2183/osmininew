@@ -1,0 +1,80 @@
+.header h1 {
+    text-align: center;
+    position: relative;
+    margin-top: 16px;
+}
+
+.barcontainer {
+    display: flex;
+    margin-top: 67px;
+}
+
+.sidebar {
+    height: 89vh;
+    width: 20%;
+    position: sticky;
+    z-index: 1;
+    top: 100px;
+    left: 5px;
+    bottom: 100px;
+    /* background-color: white; */
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-top: 20px;
+    border-right: 1px solid #1de9b6;
+    border-bottom: 1px solid #1de9b6;
+    border-top: 1px solid #1de9b6;
+}
+
+.sidebar a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #1bd3a5;
+    display: block;
+}
+
+.sidebar a:hover {
+    color: #d0d4d3;
+  }
+
+  .rightbar{
+    
+  width: 80%;
+  padding: 0px 55px;
+}
+.introduction p{
+    font-size: 19px;
+}
+.sect strong{
+    font-size: 21px;
+}
+.sect p {
+    font-size: 19px;
+}
+
+.burst img{
+    margin-bottom: 20px;
+}
+.criteria ul li{
+    font-size: 19px;
+    padding-bottom: 10px;
+}
+.algorithm ul li{
+    font-size: 19px;
+    padding-bottom: 10px;
+}
+.advantages ul li{
+    font-size: 19px;
+    padding-bottom: 10px;
+}
+
+.listitems ul li{
+    font-size: 19px;
+    padding-bottom: 10px;
+}
+.listitems ol li{
+    font-size: 19px;
+    padding-bottom: 10px;
+}
+

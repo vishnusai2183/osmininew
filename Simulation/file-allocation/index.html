@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>File Allocation</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../css/bootswatch.css" />
+
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Operating System Mini Project By Group 420" />
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+
+    <!--Inter UI font-->
+    <link rel="stylesheet" href="../css/innerui.css">
+
+    <!--vendors styles-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+
+    <!-- Bootstrap CSS / Color Scheme -->
+    <link rel="stylesheet" href="../css/default.css" id="theme-color">
+</head>
+
+<body>
+    <section>
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-md navbar-dark">
+                <a class="navbar-brand heading-black" href="../../index.html">
+                OS Project
+            </a>
+                <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span data-feather="grid"></span>
+            </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link page-scroll" href="../../10file_allocation_stratgies/fileallocation.html">Back</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+  </section>
+  <br><br>
+  <div class="container">
+    <div class="jumbo">
+      <h1 class="display-3" style="font-size: 55px; color: #5bdebb; font-weight: bold;
+	  ">File allocation
+		</h1>
+      <p class="lead">Different types of strategies followed to store a file on disc</p>
+      <hr class="my-4">
+    </div>
+  
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="card text-white bg-danger mb-3" style="max-width: 25rem;">
+          <div class="card-header">Sequential</div>
+          <div class="card-body">
+            <h4 class="card-title">Sequential</h4>
+            <p class="card-text">Sequential blocks are allocated to the file.</p>
+            <a class="btn btn-primary" href="sequential.html" role="button" style="background-color: rgb(61, 59, 59); color: aliceblue;">Simulate!</a>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-sm-4">
+        <div class="card text-white bg-danger mb-3" style="max-width: 25rem;">
+          <div class="card-header ">Indexed</div>
+          <div class="card-body">
+            <h4 class="card-title">Indexed</h4>
+            <p class="card-text">Index file is maintained to track the loaction of the blocks of the file</p>
+            <a class="btn btn-primary" href="indexed.html" role="button" style="background-color: rgb(61, 59, 59); color: aliceblue;">Simulate!</a>          </div>
+        </div>
+      </div>
+  
+      <div class="col-sm-4">
+        <div class="card text-white bg-danger mb-3" style="max-width: 25rem;">
+          <div class="card-header">Linked</div>
+          <div class="card-body">
+            <h4 class="card-title">Linked</h4>
+            <p class="card-text">Block value and pointers to the next block of the file are maintained in the sectors of the file.</p>
+              <a class="btn btn-primary" href="linked.html" role="button" style="background-color: rgb(61, 59, 59); color: aliceblue;">Simulate!</a>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  </div>
+</body>
+</html>

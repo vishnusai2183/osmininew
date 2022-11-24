@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>MFT | MMU</title>
+    <meta name="description" content="#" />
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+    <!--Inter UI font-->
+    <link rel="stylesheet" href="../css/innerui.css">
+
+    <!--vendors styles-->
+    <link rel="stylesheet" href="../css/topic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+
+    <!-- Bootstrap CSS / Color Scheme -->
+    <link rel="stylesheet" href="../css/default.css" id="theme-color">
+    <link rel="stylesheet" href="../css/tl.css">
+</head>
+
+<body>
+
+    <!--navigation-->
+    <section class="smart-scroll">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-md navbar-dark">
+                <a class="navbar-brand heading-black" href="../index.html">
+                    OS Project
+                </a>
+                <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse"
+                    data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span data-feather="grid"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link page-scroll" href="mailto:contact@shariquenadim.tk?subject=We love to hear you&body=Please provide us your precious feedback.. ">Feedback</a>
+                        </li>
+
+                        <li class="nav-item ">
+                            <a class="nav-link page-scroll " href="# ">Reference</i></a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link page-scroll d-flex flex-row align-items-center text-primary " href="../contents.html ">
+                                <em data-feather="layout " width="18 " height="18 " class="mr-2 "></em><i class="fa fa-indent " aria-hidden="true "> </i> &nbsp; INDEX
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link page-scroll d-flex flex-row align-items-center text-primary " href="../Simulation/Memory_Allocation/index.html">
+                                <em data-feather="layout " width="18 " height="18 " class="mr-2 "></em><i class="fa fa-cogs" aria-hidden="true "> </i> &nbsp; SIMULATION
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </section>
+
+    <div class="barcontainer">
+
+        <div class="sidebar ">
+            <h5> <a href="mmt.html"> Memory Managment Techniques </a></h5>
+            <dl>
+                
+                <dd><a href="mft.html">MFT</a></dd>
+                <dd><a href="mvt.html">MVT</a></dd>
+                
+            </dl>
+
+        </div>
+
+        <div class="rightbar">
+            <div class="header ">
+                <h1>MULTIPROGRAMMING WITH FIXED NUMBER OF TASKS (MFT): </h1>
+            </div>
+            <div class="introduction">
+                <p>MFT (Multiprogramming with a Fixed number of Tasks) is one of the old memory management techniques in which the memory is partitioned into fixed size partitions and each job is assigned to a partition. The memory assigned to a partition does not change. </p> <br>
+                <p>The scheduler allocates memory to jobs based on the size of the job. Once loaded, the job can then compete for CPU time.</p> <br>
+
+                    <p>Best-Fit starts with the largest job and fits it in the smallest available space, until all possible allocations are made. It could also process the jobs in FIFO order, fitting each in the smallest space available. First-fit processes the jobs in FIFO order, fitting each in the first available space, until no more allocation is possible.  </p>
+                    
+                    
+            </div>
+
+            <div class="advantages sect">
+                <strong>Advantages: </strong>
+                <ul>
+                    <li>A fixed number of jobs at a time and this is known.  </li>
+                    <li>No frequent switching of boundary registers. </li>
+                    <li>The strategy can be used along with swapping.</li>
+                </ul>
+                <br>
+                <strong>Disadvantages:  </strong>
+                <ul>
+                    <li>Job scheduling is an expensive overhead. </li>
+                    <li>Fragmentation can be high.
+                        <ol>
+                            <li>Internal fragmentation occurs when space is allocated but not used.</li>
+                            <li>External fragmentation occurs when space not allocated and not used. </li>
+                        </ol>
+                    </li>
+                    <li>There could be a job that is too large to run in the system.  </li>
+                    
+                    
+                </ul>
+
+               
+            </div>
+            <br>
+
+
+            <img src="images/MFT.q.PNG" alt="">
+            <br><br>
+            <img src="images/MFT_a.PNG" alt="">
+<br>
+            <div class="code sect">
+                <strong>C <span onclick="copyfunction">Code </span></strong>
+                <iframe
+src="
+https://carbon.now.sh/embed?bg=rgba%2886%2C201%2C89%2C1%29&t=base16-light&wt=none&l=auto&width=680&ds=true&dsyoff=20px&dsblur=68px&wc=true&wa=true&pv=56px&ph=56px&ln=false&fl=1&fm=Hack&fs=14px&lh=133%25&si=false&es=2x&wm=false&code=%2523include%2520%253Cstdio.h%253E%2520%250A%250A%2520%250A%250Aint%2520main%28%29%2520%250A%250A%257B%2520%250A%250A%2520%2520%2520%2520int%2520number%252C%2520number_partitions%252C%2520size%252C%2520internal%253D0%252C%2520external%253D0%253B%2520%250A%250A%2520%2520%2520%2520printf%28%2522Enter%2520the%2520number%2520of%2520processes%253A%2520%2522%29%253B%2520%250A%250A%2520%2520%2520%2520scanf%28%2522%2525d%2522%252C%2520%2526number%29%253B%2520%250A%250A%2520%2520%2520%2520%2520%250A%250A%2520%2520%2520%2520printf%28%2522Enter%2520the%2520size%2520of%2520memory%28in%2520bytes%29%253A%2520%2522%29%253B%2520%250A%250A%2520%2520%2520%2520scanf%28%2522%2525d%2522%252C%2520%2526size%29%253B%2520%250A%250A%2520%2520%2520%2520%2520%250A%250A%2520%2520%2520%2520printf%28%2522Enter%2520the%2520number%2520of%2520the%2520partitions%253A%2520%2522%29%253B%2520%250A%250A%2520%2520%2520%2520scanf%28%2522%2525d%2522%252C%2520%2526number_partitions%29%253B%2520%250A%250A%2520%2520%2520%2520%2520%250A%250A%2520%2520%2520%2520int%2520status%255Bnumber%255D%252C%2520processes%255Bnumber%255D%252C%2520partitions%255B2%255D%255Bnumber_partitions%255D%252C%2520sum%253D0%253B%2520%250A%250A%2520%2520%2520%2520%2520%250A%250A%2520%2520%2520%2520for%28int%2520i%253D0%253Bi%253Cnumber_partitions-1%253Bi%252B%252B%29%257B%2520%250A%250A%2520%2520%2520%2520%2520%2520%2520%2520printf%28%2522Enter%2520the%2520memory%2520for%2520partition-%2525d%28in%2520bytes%29%253A%2520%2522%252C%2520i%252B1%29%253B%2520%250A%250A%2520%2520%2520%2520%2520%2520%2520%2520scanf%28%2522%2525d%2522%252C%2520%2526partitions%255B0%255D%255Bi%255D%29%253B%2520%250A%250A%2520%2520%2520%2520%2520%2520%2520%2520sum%252B%253Dpartitions%255B0%255D%255Bi%255D%253B%2520%250A%250A%2520%2520%2520%2520%2520%2520%2520%2520partitions%255B1%255D%255Bi%255D%253D0%253B%2520%250A%250A%2520%2520%2520%2520%257D%2520%250A%250A%2520%2520%2520%2520%2520%250A%250A%2520%2520%2520%2520partitions%255B0%255D%255Bnumber_partitions-1%255D%253Dsize-sum%253B%2520%250A%250A%2520%2520%2520%2520partitions%255B1%255D%255Bnumber_partitions-1%255D%253D0%253B%2520%250A%250A%2520%2520%2520%2520%2520%250A%250A%2520%2520%2520%2520for%28int%2520i%253D0%253Bi%253Cnumber%253Bi%252B%252B%29%257B%2520%250A%250A%2520%2520%2520%2520%2520%2520%2520%2520status%255Bi%255D%253D0%253B%2520%250A%250A%2520%2520%2520%2520%257D%2520%250A%250A%2520%2520%2520%2520%2520%250A%250A%2520%2520%2520%2520for%28int%2520i%253D0%253Bi%253Cnumber%253Bi%252B%252B%29%257B%2520%250A%250A%2520%2520%2520%2520%2520%2520%2520%2520printf%28%2522Enter%2520the%2520size%2520of%2520process-%2525d%28in%2520bytes%29%253A%2520%2522%252C%2520i%252B1%29%253B%2520%250A%250A%2520%2520%2520%2520%2520%2520%2520%2520scanf%28%2522%2525d%2522%252C%2520%2526processes%255Bi%255D%29%253B%2520%250A%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%250A%250A%2520%2520%2520%2520%2520%2520%2520%2520int%2520j%253B%2520%250A%250A%2520%2520%2520%2520%2520%2520%2520%2520for%28j%253D0%253Bj%253Cnumber_partitions%253Bj%252B%252B%29%257B%2520%250A%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520if%28processes%255Bi%255D%253C%253Dpartitions%255B0%255D%255Bj%255D%2526%2526partitions%255B1%255D%255Bj%255D%253D%253D0%29%257B%2520%250A%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520status%255Bi%255D%253D1%253B%2520%250A%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520internal%252B%253Dpartitions%255B0%255D%255Bj%255D-processes%255Bi%255D%253B%2520%250A%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520partitions%255B1%255D%255Bj%255D%253D1%253B%2520%250A%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520printf%28%2522%2525d%2520bytes%2520of%2520memory%2520allocated%2520to%2520Process-%2525d%255Cn%255Cn%2522%252C%2520processes%255Bi%255D%252C%2520i%252B1%29%253B%2520%250A%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520break%253B%2520%250A%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%257D%2520%250A%250A%2520%2520%2520%2520%2520%2520%2520%2520%257D%2520%250A%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%250A%250A%2520%2520%2520%2520%2520%2520%2520%2520if%28j%253D%253Dnumber_partitions%29%257B%2520%250A%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520printf%28%2522No%2520memory%2520allocated%21%255Cn%255Cn%2522%29%253B%2520%250A%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520int%2520sum%253D0%253B%2520%250A%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520for%28int%2520i%253D0%253Bi%253Cnumber_partitions%253Bi%252B%252B%29%257B%2520%250A%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520if%28partitions%255B1%255D%255Bi%255D%253D%253D0%29%257B%2520%250A%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520sum%252B%253Dpartitions%255B0%255D%255Bi%255D%253B%2520%250A%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%257D%2520%250A%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%257D%2520%250A%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%250A%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520if%28sum%253E%253Dprocesses%255Bi%255D%29%257B%2520%250A%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520external%252B%253Dprocesses%255Bi%255D%253B%2520%250A%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%257D%2520%250A%250A%2520%2520%2520%2520%2520%2520%2520%2520%257D%2520%250A%250A%2520%2520%2520%2520%257D%2520%250A%250A%2520%2520%2520%2520%2520%250A%250A%2520%2520%2520%2520printf%28%2522ProcessID%255CtMemory%255Cn%2522%29%253B%2520%250A%250A%2520%2520%2520%2520for%28int%2520i%253D0%253Bi%253Cnumber%253Bi%252B%252B%29%257B%2520%250A%250A%2520%2520%2520%2520%2520%2520%2520%2520if%28status%255Bi%255D%253D%253D1%29%257B%2520%250A%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520printf%28%2522%2525d%255Ct%255Ct%2525
+"
+style="width: 100%; height: 90vh; border:0; transform: scale(1); overflow:hidden;"
+sandbox="allow-scripts allow-same-origin">
+</iframe>
+
+            </div>
+
+        </div>
+    
+    </div>
+   
+
+
+    <!--footer-->
+    <footer class="py-6 ">
+        <div class="container ">
+            <div class="row ">
+                <div class="col-sm-5 mr-auto ">
+                    <h5>OS Project</h5>
+                    <p class="text-muted ">Description</p>
+                    <ul class="list-inline social social-sm ">
+                        <li class="list-inline-item ">
+                            <a href="https://osmini.netlify.app/ " target="_blank "><i class="fa fa-link "></i>Live</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="col-sm-2 ">
+                    <h5><a href="mailto:contact@shariquenadim.tk?subject=We love to hear you&body=Please provide us your precious feedback.. ">Feedback</a></h5>
+
+                </div>
+                <div class="col-sm-2 ">
+                    <h5><a href="# ">Reference</a></h5>
+
+                </div>
+                <div class="col-sm-2 ">
+                    <h5><a href="../index.html ">Home</a></h5>
+
+                </div>
+            </div>
+            <div class="row mt-5 ">
+                <div class="col-12 text-muted text-center small-xl ">
+                    &copy;
+                    <script>
+                        document.write(new Date().getFullYear());
+                    </script> Computer Science Department -<a href="https://www.nitk.ac.in/ " target="_blank "> National Institute of Technology, Karnataka </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+   
+
+
+
+    <!--scroll to top-->
+    <div class="scroll-top ">
+        <i class="fa fa-angle-up " aria-hidden="true "></i>
+    </div>
+
+
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js "></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.7.3/feather.min.js "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js "></script>
+    <script src="js/scripts.js "></script>
+
+    <!-- script for index animation -->
+    <script>
+        (function ($) {
+            $(function () {
+
+
+                $(window).on('scroll', function () {
+                    fnOnScroll();
+                });
+
+                $(window).on('resize', function () {
+                    fnOnResize();
+                });
+
+
+                var agTimeline = $('.js-timeline'),
+                    agTimelineLine = $('.js-timeline_line'),
+                    agTimelineLineProgress = $('.js-timeline_line-progress'),
+                    agTimelinePoint = $('.js-timeline-card_point-box'),
+                    agTimelineItem = $('.js-timeline_item'),
+                    agOuterHeight = $(window).outerHeight(),
+                    agHeight = $(window).height(),
+                    f = -1,
+                    agFlag = false;
+
+                function fnOnScroll() {
+                    agPosY = $(window).scrollTop();
+
+                    fnUpdateFrame();
+                }
+
+                function fnOnResize() {
+                    agPosY = $(window).scrollTop();
+                    agHeight = $(window).height();
+
+                    fnUpdateFrame();
+                }
+
+                function fnUpdateWindow() {
+                    agFlag = false;
+
+                    agTimelineLine.css({
+                        top: agTimelineItem.first().find(agTimelinePoint).offset().top - agTimelineItem.first().offset().top,
+                        bottom: agTimeline.offset().top + agTimeline.outerHeight() - agTimelineItem.last().find(agTimelinePoint).offset().top
+                    });
+
+                    f !== agPosY && (f = agPosY, agHeight, fnUpdateProgress());
+                }
+
+                function fnUpdateProgress() {
+                    var agTop = agTimelineItem.last().find(agTimelinePoint).offset().top;
+
+                    i = agTop + agPosY - $(window).scrollTop();
+                    a = agTimelineLineProgress.offset().top + agPosY - $(window).scrollTop();
+                    n = agPosY - a + agOuterHeight / 2;
+                    i <= agPosY + agOuterHeight / 2 && (n = i - a);
+                    agTimelineLineProgress.css({
+                        height: n + "px "
+                    });
+
+                    agTimelineItem.each(function () {
+                        var agTop = $(this).find(agTimelinePoint).offset().top;
+
+                        (agTop + agPosY - $(window).scrollTop()) < agPosY + .5 * agOuterHeight ? $(this).addClass('js-ag-active') : $(this).removeClass('js-ag-active');
+                    })
+                }
+
+                function fnUpdateFrame() {
+                    agFlag || requestAnimationFrame(fnUpdateWindow);
+                    agFlag = true;
+                }
+
+
+            });
+        })(jQuery);
+    </script>
+
+</body>
+
+</html>

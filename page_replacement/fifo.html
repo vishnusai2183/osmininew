@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>FIFO | Page Replacement</title>
+    <meta name="description" content="#" />
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+    <!--Inter UI font-->
+    <link rel="stylesheet" href="../css/innerui.css">
+
+    <!--vendors styles-->
+    <link rel="stylesheet" href="../css/topic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+
+    <!-- Bootstrap CSS / Color Scheme -->
+    <link rel="stylesheet" href="../css/default.css" id="theme-color">
+    <link rel="stylesheet" href="../css/tl.css">
+</head>
+
+<body>
+
+    <!--navigation-->
+    <section class="smart-scroll">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-md navbar-dark">
+                <a class="navbar-brand heading-black" href="../index.html">
+                    OS Project
+                </a>
+                <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse"
+                    data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span data-feather="grid"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link page-scroll" href="mailto:contact@shariquenadim.tk?subject=We love to hear you&body=Please provide us your precious feedback.. ">Feedback</a>
+                        </li>
+
+                        <li class="nav-item ">
+                            <a class="nav-link page-scroll " href="# ">Reference</i></a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link page-scroll d-flex flex-row align-items-center text-primary " href="../contents.html ">
+                                <em data-feather="layout " width="18 " height="18 " class="mr-2 "></em><i class="fa fa-indent " aria-hidden="true "> </i> &nbsp; INDEX
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link page-scroll d-flex flex-row align-items-center text-primary " href="../Simulation/Page_Replacement/index.html">
+                                <em data-feather="layout " width="18 " height="18 " class="mr-2 "></em><i class="fa fa-cogs" aria-hidden="true "> </i> &nbsp; SIMULATION
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </section>
+
+    <div class="barcontainer">
+
+        <div class="sidebar ">
+            <h5> <a href="prmain.html"> Page Replacement Algorithms </a></h5>
+            <dl>
+                
+                <dd><a href="fifo.html">First In First Out(FIFO)</a></dd>
+                <dd><a href="lru.html">Least Recently Used(LRU)</a></dd>
+                <dd><a href="optimal.html">Optimal</a></dd>
+                
+            </dl>
+
+        </div>
+
+        <div class="rightbar">
+            <div class="header ">
+                <h1>FIFO PAGE REPLACEMENT  </h1>
+            </div>
+            <div class="introduction">
+                <p>The main principle of FIFO, the process keeps track of all pages in the memory in a queue, the oldest page is in the front of the queue. When a page needs to be replaced page in the front of the queue is selected for removal. We can create a FIFO queue to hold all pages in memory. We replace the page at the head of the queue. When a page is brought into memory, we insert it at the tail of the queue. </p> <br>
+                <p>This algorithm suffers with Belady’s Anomaly. </p>
+                <p><b>Page Fault</b> – A page fault happens when a running program accesses a memory page that is mapped into the virtual address space but not loaded in physical memory.</p>
+                <p><b>Example:</b><br>
+                    Let us consider reference string 3, 2, 1, 0, 3, 2, 4, 3, 2, 1, 0, 4 with 3-page frames. Find number of page faults? <br>
+                    <br>Reference string:3 2 1 0 3 2 4 3 2 1 0 4 
+
+                  
+                  <br><br>  <img src="images/page fault hit.png" alt="page fault hit table"><br><br>
+                  M-Miss<br>
+                  H-Hits <br>
+                  No.of page faults: 9<br>
+                  No.of Hits: 3<br>
+                </p>   
+                <p>When we do same string with 4-frames </p>
+                <img src="images/page fault hit 4 frames.png" alt=""><br><br>
+                <p>
+                  M-Miss<br>
+                  H-Hits <br>
+                  No.of page faults: 10<br>
+                  No.of Hits: 2<br>
+                </p>
+                <p>When we in the above example 1,2. If we increase the frames the page faults
+                    should decrease, but in 2nd example it was increased it is because of
+                    Belady’s Anomaly.</p>
+            </div>
+
+            <div class="advantages sect">
+                <strong>Belady’s anomaly: </strong><br>
+                <p>Belady’s anomaly proves that it is possible to have more page faults when
+                    increasing the number of page frames while using the First in First Out
+                    (FIFO) page replacement algorithm. For example, if we consider reference
+                    string 3, 2, 1, 0, 3, 2, 4, 3, 2, 1, 0, 4 and 3 slots, we get 9 total page faults, but
+                    if we increase slots to 4, we get 10-page faults.</p>
+            </div>
+
+            <div class="advantages sect">
+                <strong>Advantages: </strong>
+                <ul>
+                    <li>It is simple and easy to understand & implement. </li>
+                    <li>It is efficiently used for small systems. </li>
+                    <li>It does not cause more overheads. </li>
+                </ul>
+                <br>
+                <strong>Disadvantages:  </strong>
+                <ul>
+                    <li>The process effectiveness is low.</li>
+                    <li>This algorithm suffers with Belady’s Anomaly.</li>
+                    <li>Every frame needs to be taken account off.</li>
+                    <li>It uses an additional data structure.</li>
+                    
+                </ul>
+
+               
+            </div>
+            <br>
+
+
+            <img src="images/MFT.q.PNG" alt="">
+            <br><br>
+            <img src="images/MFT_a.PNG" alt="">
+<br>
+            <div class="code sect">
+                <strong>C <span onclick="copyfunction">Code </span></strong>
+                <iframe
+src="
+https://carbon.now.sh/embed?
+"
+style="width: 100%; height: 90vh; border:0; transform: scale(1); overflow:hidden;"
+sandbox="allow-scripts allow-same-origin">
+</iframe>
+
+            </div>
+
+        </div>
+    
+    </div>
+   
+
+
+    <!--footer-->
+    <footer class="py-6 ">
+        <div class="container ">
+            <div class="row ">
+                <div class="col-sm-5 mr-auto ">
+                    <h5>OS Project</h5>
+                    <p class="text-muted ">Description</p>
+                    <ul class="list-inline social social-sm ">
+                        <li class="list-inline-item ">
+                            <a href="https://osmini.netlify.app/ " target="_blank "><i class="fa fa-link "></i>Live</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="col-sm-2 ">
+                    <h5><a href="mailto:contact@shariquenadim.tk?subject=We love to hear you&body=Please provide us your precious feedback.. ">Feedback</a></h5>
+
+                </div>
+                <div class="col-sm-2 ">
+                    <h5><a href="# ">Reference</a></h5>
+
+                </div>
+                <div class="col-sm-2 ">
+                    <h5><a href="../index.html ">Home</a></h5>
+
+                </div>
+            </div>
+            <div class="row mt-5 ">
+                <div class="col-12 text-muted text-center small-xl ">
+                    &copy;
+                    <script>
+                        document.write(new Date().getFullYear());
+                    </script> Computer Science Department -<a href="https://www.nitk.ac.in/ " target="_blank "> National Institute of Technology, Karnataka </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+   
+
+
+
+    <!--scroll to top-->
+    <div class="scroll-top ">
+        <i class="fa fa-angle-up " aria-hidden="true "></i>
+    </div>
+
+
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js "></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.7.3/feather.min.js "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js "></script>
+    <script src="js/scripts.js "></script>
+
+    <!-- script for index animation -->
+    <script>
+        (function ($) {
+            $(function () {
+
+
+                $(window).on('scroll', function () {
+                    fnOnScroll();
+                });
+
+                $(window).on('resize', function () {
+                    fnOnResize();
+                });
+
+
+                var agTimeline = $('.js-timeline'),
+                    agTimelineLine = $('.js-timeline_line'),
+                    agTimelineLineProgress = $('.js-timeline_line-progress'),
+                    agTimelinePoint = $('.js-timeline-card_point-box'),
+                    agTimelineItem = $('.js-timeline_item'),
+                    agOuterHeight = $(window).outerHeight(),
+                    agHeight = $(window).height(),
+                    f = -1,
+                    agFlag = false;
+
+                function fnOnScroll() {
+                    agPosY = $(window).scrollTop();
+
+                    fnUpdateFrame();
+                }
+
+                function fnOnResize() {
+                    agPosY = $(window).scrollTop();
+                    agHeight = $(window).height();
+
+                    fnUpdateFrame();
+                }
+
+                function fnUpdateWindow() {
+                    agFlag = false;
+
+                    agTimelineLine.css({
+                        top: agTimelineItem.first().find(agTimelinePoint).offset().top - agTimelineItem.first().offset().top,
+                        bottom: agTimeline.offset().top + agTimeline.outerHeight() - agTimelineItem.last().find(agTimelinePoint).offset().top
+                    });
+
+                    f !== agPosY && (f = agPosY, agHeight, fnUpdateProgress());
+                }
+
+                function fnUpdateProgress() {
+                    var agTop = agTimelineItem.last().find(agTimelinePoint).offset().top;
+
+                    i = agTop + agPosY - $(window).scrollTop();
+                    a = agTimelineLineProgress.offset().top + agPosY - $(window).scrollTop();
+                    n = agPosY - a + agOuterHeight / 2;
+                    i <= agPosY + agOuterHeight / 2 && (n = i - a);
+                    agTimelineLineProgress.css({
+                        height: n + "px "
+                    });
+
+                    agTimelineItem.each(function () {
+                        var agTop = $(this).find(agTimelinePoint).offset().top;
+
+                        (agTop + agPosY - $(window).scrollTop()) < agPosY + .5 * agOuterHeight ? $(this).addClass('js-ag-active') : $(this).removeClass('js-ag-active');
+                    })
+                }
+
+                function fnUpdateFrame() {
+                    agFlag || requestAnimationFrame(fnUpdateWindow);
+                    agFlag = true;
+                }
+
+
+            });
+        })(jQuery);
+    </script>
+
+</body>
+
+</html>

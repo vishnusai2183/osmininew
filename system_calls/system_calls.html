@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>System Calls</title>
+    <meta name="description" content="#" />
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+    <!--Inter UI font-->
+    <link rel="stylesheet" href="../css/innerui.css">
+
+    <!--vendors styles-->
+    <link rel="stylesheet" href="../css/topic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+
+    <!-- Bootstrap CSS / Color Scheme -->
+    <link rel="stylesheet" href="../css/default.css" id="theme-color">
+    <link rel="stylesheet" href="../css/tl.css">
+</head>
+
+<body>
+
+    <!--navigation-->
+    <section class="smart-scroll">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-md navbar-dark">
+                <a class="navbar-brand heading-black" href="../index.html">
+                    OS Project
+                </a>
+                <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span data-feather="grid"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link page-scroll" href="mailto:contact@shariquenadim.tk?subject=We love to hear you&body=Please provide us your precious feedback.. ">Feedback</a>
+                        </li>
+
+                        <li class="nav-item ">
+                            <a class="nav-link page-scroll " href="../refrence/refrence.html">Reference</i></a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link page-scroll d-flex flex-row align-items-center text-primary " href="../contents.html ">
+                                <em data-feather="layout " width="18 " height="18 " class="mr-2 "></em><i class="fa fa-indent " aria-hidden="true "> </i> &nbsp; INDEX
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </section>
+
+    <div class="barcontainer">
+
+        <!--<div class="sidebar ">
+            <h5> <a href="mmt.html"> Memory Managment Techniques </a></h5>
+            <dl>
+                
+                <dd><a href="mft.html">MFT</a></dd>
+                <dd><a href="mvt.html">MVT</a></dd>
+                
+            </dl>
+
+        </div>-->
+
+        <div class="rightbar">
+            <div class="header ">
+                <h1>System Calls </h1>
+            </div>
+            <div class="introduction">
+                <p>Programmatic way in which a computer program requests a service from the kernel of the operating system on which it is executed. System calls provide an interface to the services made available by an Operating system. </p>
+            </div>
+
+            <!-- use bellow div if there is a heading why do we want  this? -->
+            <div class="why sect">
+                <strong>WORKING OF SYSTEM CALL:</strong>
+                <ol>
+                    <li>Request of process from user space. </li>
+                    <li>Interrupt request for kernel. </li>
+                    <li>Control transfer to kernel. </li>
+                    <li>Kernel checks if operation can be done. </li>
+                    <li>Kernel performs operation. </li>
+                    <li>Kernel returns the output to the user process. </li>
+                </ol>
+            </div>
+
+
+            <!-- Scheduling Algorithms: -->
+            <div class="algorithm sect">
+                <strong>SYSTEM CALL CATEGORIES: </strong>
+                <br>
+                <ol>
+                    <li>Process control </li>
+                    <li>File Access, Directory and File system management</li>
+                    <li>Main memory management </li>
+                    <li>Device handling(I/O)</li>
+                    <li>Protection </li>
+                    <li>Networking</li>
+                </ol>
+
+                <br>
+
+            </div>
+
+
+            <div class="why sect">
+                <strong>EXAMPLES OF SYSTEM CALLS IN THE ABOVE CATEGORIES AND THEIR FUNCTIONS: </strong>
+                <ol>
+                    <li><b>create()-</b><br>A system call used to create a new empty file. The return type of this system call is integer. It has two parameters namely, filename and mode. <br>int create(char *filename, mode_t mode); </li>
+                    <li><b> open() -</b><br>A system call used to open a file for reading, writing or both. The return type is integer and it also has two parameters. Path denotes the path to file which we would use. <br>int open(const char* path, int flags[,
+                        int mode ]);
+                    </li>
+                    <li><b>close() - </b><br>A system call used to tell the operating system that you are done with a file descriptor(which is the parameter of close()) and close the file which is pointed by the given parameter(file descriptor).<br>int close(int
+                        fd);
+                        <br>Where fd file descriptor is a parameter and it returns 0 on success and -1 on error
+                    </li>
+                    <li><b>read() -</b><br>From the file indicated by the file descriptor(integer parameter), the read() system call reads n bytes of input(integer parameter(int n)) into the memory area indicated by p(pointer(void* p) parameter).<br>size_t
+                        read (int fd, void* p, int n);</li>
+                    <li><b>write() - </b><br>A system call which writes n bytes(integer parameter) from p(pointer(void* p) parameter) to the file or socket associated with file descriptor(int parameter).<br>size_t write (int fd, void *p, int n);</li>
+                    <li><b> lseek() -</b><br>A system call that is used to change the location of the read/write pointer of a file descriptor<br>off_t lseek(int fildes, off_t offset, int whence); <br>Where fd or file descriptor , offset(offset to read/write)
+                        and whence(specifies offset relation and seek behavior) are the parameters.</li>
+                    <li><b>dup() -</b><br>A system call creates a copy of a given file descriptor. This new descriptor does not behave like a copy, but like an alias of the old one. <br>int dup(int oldfd);<br>Where oldfd is the file descriptor to copy the
+                        parameter
+                    </li>
+                    <li><b>link() -</b><br>A system call used to link a new file name to an existing file. However, it is impossible to say which file is the original one.<br>int link(const char *oldpath, const char *newpath);<br>Where oldpath(pointer to
+                        a string with old filename) and newpath(pointer to string with ne filename) are the parameters </li>
+                    <li><b>unlink() -</b><br>A system call used to delete a file name from the filesystem. If that name was the last link to a file and no processes have the file open the file is deleted and the space it was using is made available for reuse.<br>int
+                        unlink(const char *pathname);<br>Where pathname(pointer to string with path name) is a parameter. </li>
+                    <li><b>access() - </b><br>A system call which determines whether the calling process has access permission to a file. It can check any combination of read, write, and execute permission. <br>int access(const char *pathname, int mode);<br>Where
+                        pathname(file or device) and mode(permissions check to platform are the parameters. It returns 0 on success and -1 or error. </li>
+                    <li><b>chmod() -</b><br>A system call used to change the access mode of the file. The name is an abbreviation of change mode. <br>int access(const char *pathname, int mode);<br>Where path(Pointer to string with name of file or device)
+                        and mode(new permissions made) are the parameters. It returns 0 on success , -1 on error </li>
+                    <li><b>chown() -</b><br>A system call used to change the user or group ownership of a given file, directory, or symbolic link.<br>int chown(const char *path, uid_t owner, gid_t group);<br>Where path(pointer to string with name of file
+                        or device),owner(new owner of file or device) and group(new group of file or device) are the parameters. It returns 0 on success , -1 on error.</li>
+                    <li><b>umask() -</b><br>A system call used to set the calling process's file mode creation mask (umask) to mask & 0777. The umask is used by open(2), mkdir(2), and other system calls.<br>mode_t umask(mode_t mask);<br>This system call always
+                        succeeds and the previous value of the mask is returned.</li>
+                    <li><b>ioctl() -</b><br>A system call used for device-specific input/output operations and other operations which cannot be expressed by regular system calls.<br>int ioctl(int d, int request, ...);<br>Where d(open file descriptor the device
+                        file),request(request code) and …( untyped pointer) are the parameters.
+                    </li>
+                    <li><b>execl() -</b><br>A system call used to replace the current process image with a new process image specified by path. The new image is constructed from a regular, executable file called the new process image file.<br>int execl(const
+                        char *path, const char *arg,...,NULL);<br>For this system call the first and second arguments are the path of the executable file. Then the arguments we want to pass to the executable followed by NULL are taken. This system call
+                        runs the command and prints the output</li>
+                    <li><b>fork() -</b><br>A system call used for creating a new process, called child process, which runs concurrently with the process that makes the fork() call(parent process). Child and parent both execute further, from the next statement
+                        of fork(). <br>pid_t fork(void);</li>
+                    <li><b>wait() -</b><br>A system call that blocks the calling process until one of its child processes exits or a signal is received. After the child process terminates, the parent continues its execution after the wait system call instruction.
+                        <br>A system call that blocks the calling process until one of its child processes exits or a signal is received. After the child process terminates, the parent continues its execution after the wait system call instruction.<br>It
+                        takes one argument status and returns a process ID of dead children.</li>
+                    <li><b>exit() - </b><br>A computer process terminates its execution by making an exit system call. More generally, an exit in a multithreading environment means that a thread of execution has stopped running.<br>_exit() </li>
+                    <li><b>getuid() -</b><br>A system call which returns the real user ID of the calling process. <br>uid_t getuid( void );</li>
+                    <li><b>geteuid() - </b><br>A system call which returns the real user ID of the calling process.<br>uid_t getuid( void );</li>
+                    <li><b>getgid() -</b><br>A system call that returns the real group ID of the current process.<br>gid_t getgid( void );</li>
+                    <li><b>getegid() -</b><br>A system call that returns the effective group ID of the current process.<br>gid_t getegid( void ); </li>
+                    <li><b>getpid() - </b><br>A system call that returns the process ID of the calling process. This is often used by routines that generate unique temporary filenames.<br>pid_t getpid( void );
+                    </li>
+                    <li><b>getppid() -</b><br>A system call that returns the process ID of the parent of the calling process. It never throws any error therefore is always successful.<br> pid_t getppid( void );</li>
+                    <li><b>signal() -</b><br>A system call that installs a new signal handler for the signal with number num(integer parameter(int num) given to the system call signal()). <br>sighandler_t signal(int num, sighandler_t handler);<br>The signal
+                        handler is set to sighandler which may be a user specified function</li>
+                    <li><b>kill() -</b><br>A system call that is used by the operating system to send a discontinuation signal to a process, urging it to exit. On the other hand, a kill system call does not always imply that the process is being terminated;
+                        it might have a variety of meanings.<br>int kill(pid_t pid , int sig);<br>This system call can be used used to send different types of signals.<br>If pid>0 , then the signal sig is sent to the process with ID as specified by pid.<br>                        If pid=0 , then sig signal is sent to every process in the process group of the calling process.<br> If pid=-1 , then sig is sent to every process for which the calling process has permission to send signals. <br>If pid
+                        <-1 , the sig is sent to every process in the process group of the calling process, whose ID is pid.<br>If sig=0 , the no signal is sent. </li>
+                    <li><b>alarm() -</b><br>A system call that causes the system to generate a SIGALRM signal for the process after the number of real-time seconds specified by seconds(parameter(unsigned int seconds) to alarm()) have elapsed.<br>unsigned
+                        int alarm(unsigned int sec);<br>This system call is used to send a signal to the calling process in sec seconds. If the sec is given as 0 then the pending alarm will be canceled. In any event previously set alarms are canceled.
+                    </li>
+                    <li><b>chdir() -</b><br>A system call that changes the current working directory of the calling process to the directory specified in path(argument).<br>int chdir(const char* path)
+                    </li>
+                </ol>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!--footer-->
+    <footer class="py-6 ">
+        <div class="container ">
+            <div class="row ">
+                <div class="col-sm-5 mr-auto ">
+                    <h5>OS Project</h5>
+                    <p class="text-muted ">Description</p>
+                    <ul class="list-inline social social-sm ">
+                        <li class="list-inline-item ">
+                            <a href="https://osmini.netlify.app/ " target="_blank "><i class="fa fa-link "></i>Live</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="col-sm-2 ">
+                    <h5><a href="mailto:contact@shariquenadim.tk?subject=We love to hear you&body=Please provide us your precious feedback.. ">Feedback</a></h5>
+
+                </div>
+                <div class="col-sm-2 ">
+                    <h5><a href="../refrence/refrence.html">Reference</a></h5>
+
+                </div>
+                <div class="col-sm-2 ">
+                    <h5><a href="../index.html ">Home</a></h5>
+
+                </div>
+            </div>
+            <div class="row mt-5 ">
+                <div class="col-12 text-muted text-center small-xl ">
+                    &copy;
+                    <script>
+                        document.write(new Date().getFullYear());
+                    </script> Computer Science Department -<a href="https://www.nitk.ac.in/ " target="_blank "> National Institute of Technology, Karnataka </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+    <!--scroll to top-->
+    <div class="scroll-top ">
+        <i class="fa fa-angle-up " aria-hidden="true "></i>
+    </div>
+
+
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js "></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.7.3/feather.min.js "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js "></script>
+    <script src="js/scripts.js "></script>
+
+    <!-- script for index animation -->
+    <script>
+        (function($) {
+            $(function() {
+
+
+                $(window).on('scroll', function() {
+                    fnOnScroll();
+                });
+
+                $(window).on('resize', function() {
+                    fnOnResize();
+                });
+
+
+                var agTimeline = $('.js-timeline'),
+                    agTimelineLine = $('.js-timeline_line'),
+                    agTimelineLineProgress = $('.js-timeline_line-progress'),
+                    agTimelinePoint = $('.js-timeline-card_point-box'),
+                    agTimelineItem = $('.js-timeline_item'),
+                    agOuterHeight = $(window).outerHeight(),
+                    agHeight = $(window).height(),
+                    f = -1,
+                    agFlag = false;
+
+                function fnOnScroll() {
+                    agPosY = $(window).scrollTop();
+
+                    fnUpdateFrame();
+                }
+
+                function fnOnResize() {
+                    agPosY = $(window).scrollTop();
+                    agHeight = $(window).height();
+
+                    fnUpdateFrame();
+                }
+
+                function fnUpdateWindow() {
+                    agFlag = false;
+
+                    agTimelineLine.css({
+                        top: agTimelineItem.first().find(agTimelinePoint).offset().top - agTimelineItem.first().offset().top,
+                        bottom: agTimeline.offset().top + agTimeline.outerHeight() - agTimelineItem.last().find(agTimelinePoint).offset().top
+                    });
+
+                    f !== agPosY && (f = agPosY, agHeight, fnUpdateProgress());
+                }
+
+                function fnUpdateProgress() {
+                    var agTop = agTimelineItem.last().find(agTimelinePoint).offset().top;
+
+                    i = agTop + agPosY - $(window).scrollTop();
+                    a = agTimelineLineProgress.offset().top + agPosY - $(window).scrollTop();
+                    n = agPosY - a + agOuterHeight / 2;
+                    i <= agPosY + agOuterHeight / 2 && (n = i - a);
+                    agTimelineLineProgress.css({
+                        height: n + "px "
+                    });
+
+                    agTimelineItem.each(function() {
+                        var agTop = $(this).find(agTimelinePoint).offset().top;
+
+                        (agTop + agPosY - $(window).scrollTop()) < agPosY + .5 * agOuterHeight ? $(this).addClass('js-ag-active') : $(this).removeClass('js-ag-active');
+                    })
+                }
+
+                function fnUpdateFrame() {
+                    agFlag || requestAnimationFrame(fnUpdateWindow);
+                    agFlag = true;
+                }
+
+
+            });
+        })(jQuery);
+    </script>
+
+</body>
+
+</html>

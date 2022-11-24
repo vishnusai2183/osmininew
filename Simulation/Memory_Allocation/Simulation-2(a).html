@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>MVT</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../css/bootswatch.css" />
+
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Operating System Mini Project By Group 420" />
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+    <script src="../js/jquery-3.1.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/typeit.js"></script>
+    <script src="../js/MVT.js"></script>
+    <script src="../js/typed.js"></script>
+    <!--Inter UI font-->
+    <link rel="stylesheet" href="../css/innerui.css">
+
+    <!--vendors styles-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+
+    <!-- Bootstrap CSS / Color Scheme -->
+    <link rel="stylesheet" href="../css/default.css" id="theme-color">
+</head>
+
+<body>
+    <section>
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-md navbar-dark">
+                <a class="navbar-brand heading-black" href="../../index.html">
+                OS Project
+            </a>
+                <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span data-feather="grid"></span>
+            </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link page-scroll" href="index.html">Back</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+  </section>
+  <br><br>
+  <div class="container">
+    <div class="jumbo">
+      <h1 class="display-3" style="font-size: 55px; color: #5bdebb; font-weight: bold;
+      ">MVT</h1>
+      <p class="lead">Multiprogramming with Variable Tasks</p>
+      <hr class="my-4">
+      <p>In the MVT scheme, the OS keeps track of which parts of memory are available and which are occupied. Initially, all memory is available for user processes and is considered one large block of available memory, a hole. Eventually, as the
+        processes start entering and leaving the memory,there will be a set of holes of various sizes.</p>
+    </div>
+    <div id="data-input-content-1">
+      <h2 style="margin-left:300px;"> Enter the following details: </h2> </br>
+      <form class="form-horizontal">
+        <div class="form-group">
+          <label style="margin-left:300px; font-size:20px;" class="control-label col-sm-2" for="memorySize"> Total Memory: </label>
+          <div class="col-sm-4">
+            <input style="margin-left:300px;" type="number" class="form-control" id="memory" placeholder="Enter total memory size in bytes" required min="1">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <button class="btn btn-primary" style="margin-left:315px;" id="input-memory-submit" value="next" class="btn btn-danger" align="center">Next</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>
+
+
+
+
+
+
+

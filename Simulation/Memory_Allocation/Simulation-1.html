@@ -1,0 +1,124 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>MFT</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../css/bootswatch.css" />
+
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Operating System Mini Project By Group 420" />
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+
+    <!--Inter UI font-->
+    <link rel="stylesheet" href="../css/innerui.css">
+
+    <!--vendors styles-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+
+    <!-- Bootstrap CSS / Color Scheme -->
+    <link rel="stylesheet" href="../css/default.css" id="theme-color">
+</head>
+
+<body>
+    <section>
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-md navbar-dark">
+                <a class="navbar-brand heading-black" href="../../index.html">
+                OS Project
+            </a>
+                <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span data-feather="grid"></span>
+            </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link page-scroll" href="index.html">Back</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+  </section>
+  <br><br>
+  <div class="container">
+    <div class="jumbo">
+      <h1 class="display-3" class="heading-black text-capitalize" style="font-size: 55px; color: #5bdebb; font-weight: bold;
+      ">MFT</h1>
+      <p class="lead" class="ag-timeline-card_desc">Multiprogramming with Fixed Tasks</p>
+      <hr class="my-4" style="color: brown;">
+      <p class="ag-timeline-card_desc">Memory is partitioned into fixed size partitions and each job is assigned to a partition. The memory assigned to a partition does not change.</p>
+    </div>
+    <br>
+
+    <div class="row">
+      <div class="form-group" style="margin-left:50px; float:left;">
+        <label class="col-form-label" for="inputDefault">Enter total main memory size</label>
+        <input class="form-control" id="totalMemSize" name="mem_size" placeholder="Total Memory Size" type="text" size="35">
+      </div>
+      <div class="form-group" style="margin-left:50px; float:left;">
+        <label class="col-form-label" for="inputDefault">Enter number of blocks(partitions)</label>
+        <input class="form-control" id="numBlocks" name="block_no" placeholder="# Blocks" type="text" size="35">
+      </div>
+      <div class="form-group" style="margin-left:50px; float:left;">
+        <label class="col-form-label" for="sel1">Allocation Strategy</label>
+        <div style="color: white">
+          <form id="RadioGroup" action="">
+            <input type="radio" id="FF" name="method" value="FF"> First Fit<br>
+            <input type="radio" id="BF" name="method" value="BF"> Best Fit<br>
+            <input type="radio" id="WF" name="method" value="WF"> Worst Fit
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" id="submitBtn" class="btn btn-primary" style="margin-left: 36px">Submit
+    </button>
+    <br>
+    <div class="row">
+      <div id="blockContainer" class="form-group" style="margin-left:50px; float:left;"></div>
+    </div>
+    <div class="row">
+      <div id='#requestContainer'>
+        <div class="form-group" style="margin-left:50px; float:left;">
+          <label class="col-form-label" for="inputDefault">Enter the size of the new job</label>
+          <input class="form-control" id="requestSize" name="req_size" placeholder="Request Size" type="text" size="35">
+          <br>
+          <button type="submit" class="btn btn-primary" style="margin-left: 36px" id='submitRequestBtn'>Make request!</button>
+        </div>
+      </div>
+
+      <div id='#removeContainer'>
+        <div class="form-group" style="margin-left:50px; float:left;">
+          <label class="col-form-label" for="inputDefault">Enter the block number that you want to empty(starting from 1)</label>
+          <input class="form-control" id="removeNum" name="req_size" placeholder="Empty a block" type="text" size="35">
+          <br>
+          <button type="submit" class="btn btn-primary" style="margin-left: 36px; float:left;" id='removeBtn'>Empty Block</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="row"></div>
+
+    <br><br>
+    <p id='requestMsg' style="float:left; margin-left:50px; color:black;"></p>
+  </div>
+</body>
+<script src='../js/Simulation-1.js'></script>
+
+</html>

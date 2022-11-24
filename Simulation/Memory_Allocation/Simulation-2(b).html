@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>MVT</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../css/bootswatch.css" />
+
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Operating System Mini Project By Group 6" />
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+    <!--Inter UI font-->
+    <link rel="stylesheet" href="../css/innerui.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/font-awesome.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../css/bootswatch.css" />
+  
+    <!-- JavaScript Files -->
+    <script src="../js/jquery-3.1.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/typeit.js"></script>
+    <script src="../js/MVT.js"></script>
+    <script src="../js/typed.js"></script>
+
+    <!--vendors styles-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+
+    <!-- Bootstrap CSS / Color Scheme -->
+    <link rel="stylesheet" href="../css/default.css" id="theme-color">
+</head>
+
+<body>
+    <section>
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-md navbar-dark">
+                <a class="navbar-brand heading-black" href="../../index.html" style="font-size: 25px">
+                OS Project
+            </a>
+                <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span data-feather="grid"></span>
+            </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link page-scroll" href="index.html" style="font-size: 15px">Back</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+  </section>
+  <br><br>
+  <div class="container">
+    <div class="jumbo">
+      <h1 class="display-3" style="font-size: 55px; color: #5bdebb; font-weight: bold;
+      ">MVT</h1>
+      <p class="lead" style="font-size: 20px">Multiprogramming with Variable Tasks</p>
+      <hr class="my-4">
+      <p style="font-size: 15px">First, select an allocation strategy. Then, add processes one by one. All the changes will be relected in the output table. If allocation status is
+        true, then the process resides in main memory. If it is false, the process could not be allocated memory. A tick mark indicates a process that has freed its space (i.e it does not reside in
+        memory anymore). To free a process, click on that process in the main memory diagram.</p>
+    </div>
+  </div>
+
+  <button style="margin-right:60px; margin-left:450px; font-size:20px;" type="button" id="first-fit-select" class="btn btn-primary">First Fit</button>
+  <button style="margin-right:60px;font-size:20px;" type="button" id="best-fit-select" class="btn btn-primary">Best Fit</button>
+  <button style="margin-right:60px;font-size:20px;" type="button" id="worst-fit-select" class="btn btn-primary">Worst Fit</button>
+  <br><br>
+
+  <div id="demo-box">
+    <div class="col-sm-6" id="left-box">
+      <div class="col-sm-6">
+        <br>
+        <h4>Main Memory</h4>
+        <div id="block-0">
+          <div id="block--1"> </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <br>
+        <button class="btn btn-primary" id="add-process-button" style="margin-top: 28px; font-size:15px">Add Process</button>
+      </div>
+    </div>
+    <div class="col-sm-6" id="right-box">
+      <br>
+      <h3 style="font-size:25px">Output Table</h3>
+      <br>
+      <table class="table table-striped" id="output-table">
+        <thead style="background-color: #99A3A4;">
+          <tr>
+            <th style="font-size:20px">Process No.</th>
+            <th style="font-size:20px">Process Size</th>
+            <th style="font-size:20px">Allocation Status</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  </div>
+</body>
+
+</html>

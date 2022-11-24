@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
+    <title>DISK SCHEDULING</title> 
+    <meta name="description" content="#" />
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"> 
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"> 
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"> 
+
+    <!--Inter UI font-->
+    <link rel="stylesheet" href="../css/innerui.css">
+
+    <!--vendors styles-->
+    <link rel="stylesheet" href="../css/topic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+
+    <!-- Bootstrap CSS / Color Scheme -->
+    <link rel="stylesheet" href="../css/default.css" id="theme-color">
+    <link rel="stylesheet" href="../css/tl.css">
+</head>
+
+<body>
+
+    <!--navigation-->
+    <section class="smart-scroll">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-md navbar-dark">
+                <a class="navbar-brand heading-black" href="../index.html">
+                    OS Project
+                </a>
+                <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse"
+                    data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span data-feather="grid"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link page-scroll" href="mailto:contact@shariquenadim.tk?subject=We love to hear you&body=Please provide us your precious feedback.. ">Feedback</a>
+                        </li>
+
+                        <li class="nav-item ">
+                            <a class="nav-link page-scroll " href="../refrence/refrence.html">Reference</i></a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link page-scroll d-flex flex-row align-items-center text-primary " href="../contents.html ">
+                                <em data-feather="layout " width="18 " height="18 " class="mr-2 "></em><i class="fa fa-indent " aria-hidden="true "> </i> &nbsp; INDEX
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link page-scroll d-flex flex-row align-items-center text-primary " href="../Simulation/disc/index.html">
+                                <em data-feather="layout " width="18 " height="18 " class="mr-2 "></em><i class="fa fa-cogs" aria-hidden="true "> </i> &nbsp; SIMULATION
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </section>
+
+    <div class="barcontainer">
+
+        <div class="sidebar listitems">
+            <h5> <a href="disk.html">DISK SCHEDULING</a></h5>
+
+            <ul class="listitems">
+                <!-- <dt><h6>FILE ALLOCATION METHODS</h6></dt> -->
+                <li><a href="diskfcfs.html">FCFS Scheduling</a></li>
+                <li><a href="SCAN.html">SCAN Scheduling </a></li> 
+                <li><a href="CSCAN.html">C-SCAN Scheduling </a></li> 
+                <li><a href="SSTF.html">SSTF Scheduling</a></li> 
+            </ul>
+
+        </div>
+
+        <div class="rightbar">
+            <div class="header ">
+                <h1>SHORTEST SEEK TIME FIRST SCHEDULING </h1>
+            </div>
+            <div class="introduction">
+                <p>It seems reasonable to service all the requests close to the current head position before moving the head far away to service other requests. This assumption is the basis for the shortest-seek-time-first (SSTF) algorithm. The SSTF algorithm selects the request with the least seek time from the current head position. In other words, SSTF chooses the pending request closest to the current head position.  </p>
+                <p>SSTF scheduling priority is given to those processes which have the shortest seek, even if these requests are not the first ones in the queue. To implement this, the seek time of every request is calculated in advance in the queue and then requests are scheduled according to their seek time. </p>
+                <p>SSTF does not ensure fairness as it can lead to indefinite postponement as its seek pattern tends to be highly localized. SSTF is like Shortest Job First (SJF) as it can prevent distant requests from being serviced under heavy load which can be termed as Starvation. 
+
+                </p>
+            </div>
+
+            <div class="sect listitems">
+                <strong > <u> Algorithm: </u></strong>
+                <ul>
+                    <li>Let Request array represents an array storing indexes of tracks that have been requested in ascending order of their time of arrival. ‘head’ is the position of disk head.  </li>
+                    <li>The head services only in the right direction from 0 to the size of the disk. </li>
+                    <li>While moving in the left direction do not service any of the tracks.    </li>
+                    <li>When we reach the beginning (left end) reverse the direction.  </li>
+                    <li>While moving in the right direction it services all tracks one by one.  </li>
+                    <li>While moving in the right direction calculate the absolute distance of the track from the head. </li>
+                    <li>Increment the total seek count with this distance.   </li>
+                    <li>Currently serviced track position now becomes the new head position.   </li>
+                    <li>Go to step 6 until we reach the right end of the disk.  </li>
+                    <li>If we reach the right end of the disk reverse the 	d	direction and go to step 3 until all tracks in the request 	 array have not been serviced. </li>
+                </ul>
+
+
+
+                <strong > <u>Example:</u></strong> <br>
+                <strong>Input</strong>
+                <p>Number of tracks in the disk is 200(0 – 199). <br>
+
+                    A disk queue with requests for I/O to blocks on cylinders: <br>
+                    
+                    98, 183, 37, 122, 14, 124, 65, 67 <br>
+                    
+                    Request array: 98, 183, 37, 122, 14, 124, 65, 67  <br>
+                    
+                    Disk Head initial position: 53   <br></p>
+                    <img src="4.png" alt="">
+
+                    <p>The closest request to the initial head position (53) is at cylinder 65. Once we are at cylinder 65, the next closest request is at cylinder 67. From there, the request at cylinder 37 is closer than the one at 98, so 37 is served next. Continuing, we service the request at cylinder 14, then 98, 122, 124, and finally 183. This scheduling method results in a total head movement of only 236 cylinders - little more than one-third of the distance needed for FCFS scheduling of this request queue. Clearly, this algorithm gives a substantial improvement in performance.  </p>
+
+                   <p>Total seek count = (65 – 53) + (67 – 65) + (67 – 37) + (37 – 14) + (98 – 14) + (122 – 98) + (124 – 122) + (183 – 124) = 236 seek operations. </p>
+
+                   <p>Therefore, the total number of <b> seek operations is 236. 
+
+                    Seek sequence is 65, 67, 37, 14, 98, 122, 124, 183. </b> </p>
+
+                    <p>Although the SSTF algorithm is a substantial improvement over the FCFS algorithm, it is not optimal. In the example, we can do better by moving the head from 53 to 37, even though the latter is not closest, and then to 14, before turning around to service 65, 67, 98, 122, 124, and 183. This strategy reduces the total head movement to 208 cylinders. 
+                    </p>
+
+                   <div class="listitems sect">
+                    <strong>Advantages: </strong>
+                    <ul>
+                        <li>The total seek time is reduced compared to First Come First Serve.    </li>
+                        <li>SSTF improves and increases throughput.   </li>
+                        <li>Less average waiting time and response time in SSTF due to reduced number of head movements. </li>
+                        
+                    </ul>
+                    <strong>Disadvantages: </strong>
+                    <ul>
+                        <li>In SSTF there is an overhead of finding out the closest request.  </li>
+                        <li>Starvation of a request occurs if it has higher seek time than the other requests in queue even if it may have arrived first in the queue.   </li>
+                        <li>In SSTF, a high variance is present in response time and waiting time.    </li>
+                        <li>Frequent switching of the Head’s direction slows the algorithm.   </li>
+                    </ul>
+                </div>
+
+            </div>
+            
+
+        </div>
+    
+    </div>
+
+
+    <!--footer-->
+    <footer class="py-6 ">
+        <div class="container ">
+            <div class="row ">
+                <div class="col-sm-5 mr-auto ">
+                    <h5>OS Project</h5>
+                    <p class="text-muted ">Description</p>
+                    <ul class="list-inline social social-sm ">
+                        <li class="list-inline-item ">
+                            <a href="https://osmini.netlify.app/ " target="_blank "><i class="fa fa-link "></i>Live</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="col-sm-2 ">
+                    <h5><a href="mailto:contact@shariquenadim.tk?subject=We love to hear you&body=Please provide us your precious feedback.. ">Feedback</a></h5>
+
+                </div>
+                <div class="col-sm-2 ">
+                    <h5><a href="../refrence/refrence.html">Reference</a></h5>
+
+                </div>
+                <div class="col-sm-2 ">
+                    <h5><a href="../index.html ">Home</a></h5>
+
+                </div>
+            </div>
+            <div class="row mt-5 ">
+                <div class="col-12 text-muted text-center small-xl ">
+                    &copy;
+                    <script>
+                        document.write(new Date().getFullYear());
+                    </script> Computer Science Department -<a href="https://www.nitk.ac.in/ " target="_blank "> National Institute of Technology, Karnataka </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+    <!--scroll to top-->
+    <div class="scroll-top ">
+        <i class="fa fa-angle-up " aria-hidden="true "></i>
+    </div>
+
+
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js "></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.7.3/feather.min.js "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js "></script>
+    <script src="js/scripts.js "></script>
+
+    <!-- script for index animation -->
+    <script>
+        (function ($) {
+            $(function () {
+
+
+                $(window).on('scroll', function () {
+                    fnOnScroll();
+                });
+
+                $(window).on('resize', function () {
+                    fnOnResize();
+                });
+
+
+                var agTimeline = $('.js-timeline'),
+                    agTimelineLine = $('.js-timeline_line'),
+                    agTimelineLineProgress = $('.js-timeline_line-progress'),
+                    agTimelinePoint = $('.js-timeline-card_point-box'),
+                    agTimelineItem = $('.js-timeline_item'),
+                    agOuterHeight = $(window).outerHeight(),
+                    agHeight = $(window).height(),
+                    f = -1,
+                    agFlag = false;
+
+                function fnOnScroll() {
+                    agPosY = $(window).scrollTop();
+
+                    fnUpdateFrame();
+                }
+
+                function fnOnResize() {
+                    agPosY = $(window).scrollTop();
+                    agHeight = $(window).height();
+
+                    fnUpdateFrame();
+                }
+
+                function fnUpdateWindow() {
+                    agFlag = false;
+
+                    agTimelineLine.css({
+                        top: agTimelineItem.first().find(agTimelinePoint).offset().top - agTimelineItem.first().offset().top,
+                        bottom: agTimeline.offset().top + agTimeline.outerHeight() - agTimelineItem.last().find(agTimelinePoint).offset().top
+                    });
+
+                    f !== agPosY && (f = agPosY, agHeight, fnUpdateProgress());
+                }
+
+                function fnUpdateProgress() {
+                    var agTop = agTimelineItem.last().find(agTimelinePoint).offset().top;
+
+                    i = agTop + agPosY - $(window).scrollTop();
+                    a = agTimelineLineProgress.offset().top + agPosY - $(window).scrollTop();
+                    n = agPosY - a + agOuterHeight / 2;
+                    i <= agPosY + agOuterHeight / 2 && (n = i - a);
+                    agTimelineLineProgress.css({
+                        height: n + "px "
+                    });
+
+                    agTimelineItem.each(function () {
+                        var agTop = $(this).find(agTimelinePoint).offset().top;
+
+                        (agTop + agPosY - $(window).scrollTop()) < agPosY + .5 * agOuterHeight ? $(this).addClass('js-ag-active') : $(this).removeClass('js-ag-active');
+                    })
+                }
+
+                function fnUpdateFrame() {
+                    agFlag || requestAnimationFrame(fnUpdateWindow);
+                    agFlag = true;
+                }
+
+
+            });
+        })(jQuery);
+    </script>
+
+</body>
+
+</html>
